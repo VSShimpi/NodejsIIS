@@ -1,0 +1,16 @@
+(node:876) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:876) [DEP0123] DeprecationWarning: Setting the TLS ServerName to an IP address is not permitted by RFC 6066. This will be ignored in a future version.
+Error querying database: ConnectionError: Connection is closed.
+    at Request._query (D:\sites\api\node_modules\mssql\lib\base\request.js:497:37)
+    at Request._query (D:\sites\api\node_modules\mssql\lib\tedious\request.js:363:11)
+    at D:\sites\api\node_modules\mssql\lib\base\request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (D:\sites\api\node_modules\mssql\lib\base\request.js:460:12)
+    at D:\sites\api\route\getuser.js:16:38
+    at Layer.handle [as handle_request] (D:\sites\api\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\sites\api\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\sites\api\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\sites\api\node_modules\express\lib\router\layer.js:95:5) {
+  code: 'ECONNCLOSED'
+}

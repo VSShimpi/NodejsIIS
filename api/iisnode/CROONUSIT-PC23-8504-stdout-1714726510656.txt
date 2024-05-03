@@ -1,0 +1,2 @@
+Server is listening on port \\.\pipe\c336c870-2247-4361-8ee4-b01c488b2137
+Connected to MSSQL

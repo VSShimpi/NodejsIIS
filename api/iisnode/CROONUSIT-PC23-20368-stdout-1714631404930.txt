@@ -1,0 +1,2 @@
+Server is listening on port \\.\pipe\e8b2988d-652e-4eba-b8e7-b4eedee2f22d
+Database Connected

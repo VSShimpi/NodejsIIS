@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"CROONUSIT-PC23-11056-stderr-1714628077677.txt","computername":"CROONUSIT-PC23","pid":11056,"type":"stderr","created":1714628077677},{"file":"CROONUSIT-PC23-11056-stdout-1714628077675.txt","computername":"CROONUSIT-PC23","pid":11056,"type":"stdout","created":1714628077675},{"file":"CROONUSIT-PC23-12648-stderr-1714628562596.txt","computername":"CROONUSIT-PC23","pid":12648,"type":"stderr","created":1714628562596},{"file":"CROONUSIT-PC23-12648-stdout-1714628562594.txt","computername":"CROONUSIT-PC23","pid":12648,"type":"stdout","created":1714628562594},{"file":"CROONUSIT-PC23-13180-stderr-1714631990472.txt","computername":"CROONUSIT-PC23","pid":13180,"type":"stderr","created":1714631990472},{"file":"CROONUSIT-PC23-13180-stdout-1714631990470.txt","computername":"CROONUSIT-PC23","pid":13180,"type":"stdout","created":1714631990470},{"file":"CROONUSIT-PC23-15820-stderr-1714628561313.txt","computername":"CROONUSIT-PC23","pid":15820,"type":"stderr","created":1714628561313},{"file":"CROONUSIT-PC23-15820-stdout-1714628561311.txt","computername":"CROONUSIT-PC23","pid":15820,"type":"stdout","created":1714628561311},{"file":"CROONUSIT-PC23-17840-stderr-1714628570046.txt","computername":"CROONUSIT-PC23","pid":17840,"type":"stderr","created":1714628570046},{"file":"CROONUSIT-PC23-17840-stdout-1714628570044.txt","computername":"CROONUSIT-PC23","pid":17840,"type":"stdout","created":1714628570044},{"file":"CROONUSIT-PC23-20368-stderr-1714631404932.txt","computername":"CROONUSIT-PC23","pid":20368,"type":"stderr","created":1714631404932},{"file":"CROONUSIT-PC23-20368-stdout-1714631404930.txt","computername":"CROONUSIT-PC23","pid":20368,"type":"stdout","created":1714631404930},{"file":"CROONUSIT-PC23-4756-stderr-1714630603600.txt","computername":"CROONUSIT-PC23","pid":4756,"type":"stderr","created":1714630603600},{"file":"CROONUSIT-PC23-4756-stdout-1714630603597.txt","computername":"CROONUSIT-PC23","pid":4756,"type":"stdout","created":1714630603597},{"file":"CROONUSIT-PC23-6104-stderr-1714632286930.txt","computername":"CROONUSIT-PC23","pid":6104,"type":"stderr","created":1714632286930},{"file":"CROONUSIT-PC23-6104-stdout-1714632286928.txt","computername":"CROONUSIT-PC23","pid":6104,"type":"stdout","created":1714632286928},{"file":"CROONUSIT-PC23-8504-stderr-1714726510659.txt","computername":"CROONUSIT-PC23","pid":8504,"type":"stderr","created":1714726510659},{"file":"CROONUSIT-PC23-8504-stdout-1714726510656.txt","computername":"CROONUSIT-PC23","pid":8504,"type":"stdout","created":1714726510656},{"file":"CROONUSIT-PC23-876-stderr-1714631999772.txt","computername":"CROONUSIT-PC23","pid":876,"type":"stderr","created":1714631999772},{"file":"CROONUSIT-PC23-876-stdout-1714631999769.txt","computername":"CROONUSIT-PC23","pid":876,"type":"stdout","created":1714631999769},{"file":"CROONUSIT-PC23-9596-stderr-1714631988469.txt","computername":"CROONUSIT-PC23","pid":9596,"type":"stderr","created":1714631988469},{"file":"CROONUSIT-PC23-9596-stdout-1714631988453.txt","computername":"CROONUSIT-PC23","pid":9596,"type":"stdout","created":1714631988453}];
+        var lastUpdated = 1714726511190;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>
